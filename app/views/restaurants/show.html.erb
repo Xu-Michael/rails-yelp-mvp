@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><%= @restaurant.name %></div>
+  <div class="panel-body restaurant-show">
+    <img src="https://placeimg.com/640/480/architecture">
+  </div>
+
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Address: </strong><%= @restaurant.address %></li>
+    <li class="list-group-item"><strong>Phone Number: </strong><%= @restaurant.phone_number %></li>
+    <li class="list-group-item"><strong>Category: </strong><%= @restaurant.category.capitalize %></li>
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-8">
+            <p><%= review.content %></p>
+          </div>
+          <div class="col-md-4">
+            <strong>Rating: </strong><%= review.rating %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<%= link_to "Add Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
